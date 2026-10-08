@@ -1,0 +1,122 @@
+FLEXPAID WEBSITE — how to put it online
+========================================
+
+This folder is your complete FlexPaid website, split into normal web pages.
+Host it anywhere that serves static files — no WordPress, no database, nothing
+to maintain. It's fast, secure, free to host, and now SEO-optimised.
+
+
+WHAT'S IN HERE
+--------------
+index.html          → home page            (flexpaid.com.au)
+product.html        → How it works         (flexpaid.com.au/product)
+pricing.html        → Pricing              (flexpaid.com.au/pricing)
+about.html          → About                (flexpaid.com.au/about)
+contact.html        → Get started          (flexpaid.com.au/contact)
+login.html          → sends people to app  (flexpaid.com.au/login)
+trainer-terms.html  → Trainer Terms        (flexpaid.com.au/trainer-terms)
+client-terms.html   → Client Terms         (flexpaid.com.au/client-terms)
+privacy.html        → Privacy Policy       (flexpaid.com.au/privacy)
+og-image.png        → the preview image shown when the site is shared/linked
+robots.txt          → tells search engines what to crawl
+sitemap.xml         → lists your pages for Google
+
+The three legal pages sit at exactly the addresses your FlexPaid app's sign-up
+pop-up links to, so once this is live they'll just work.
+
+
+HOW TO PUT IT ONLINE (Vercel + GitHub — free)
+---------------------------------------------
+Vercel deploys from a GitHub repository (and then re-deploys automatically
+whenever the files change).
+
+  1. On GitHub, create a NEW repository (e.g. "flexpaid-website").
+  2. Upload all the files in this folder into it: on the repo page use
+     "Add file > Upload files" and drag the files in, then commit.
+  3. Go to https://vercel.com and sign in (you can sign in with GitHub).
+  4. "Add New... > Project" > Import your flexpaid-website repo.
+     Framework Preset: "Other". Click Deploy.
+  5. In under a minute you get a live address like  your-site.vercel.app  —
+     open it and check it looks right.
+
+
+CONNECTING flexpaid.com.au AND www.flexpaid.com.au (GoDaddy)
+-----------------------------------------------------------
+You want BOTH of these to open the site:
+    flexpaid.com.au           (the "apex" / bare domain)
+    www.flexpaid.com.au       (the "www" version)
+
+  1. In your Vercel project: Settings > Domains > Add. Enter "flexpaid.com.au",
+     then add "www.flexpaid.com.au" too.
+  2. Vercel shows how to point the domain at it. Since there's no email on the
+     domain yet, the simplest is to use Vercel's NAMESERVERS (it gives you two,
+     like ns1.vercel-dns.com and ns2.vercel-dns.com).
+  3. In GoDaddy: Domain Portfolio > flexpaid.com.au > Nameservers > Change >
+     "I'll use my own nameservers" > delete GoDaddy's and paste Vercel's two >
+     Save.
+     (If Vercel instead shows RECORDS to add: an A record for the bare domain to
+     76.76.21.21, and a CNAME for "www" to cname.vercel-dns.com. Either works.)
+  4. Wait ~15 min to a few hours. Both addresses then show the site and HTTPS
+     (the padlock) is automatic. flexpaid.com.au is the primary; www redirects
+     to it.
+
+
+YOUR CONTACT FORM — Web3Forms (free, emails you each enquiry)
+------------------------------------------------------------
+The "Get started" form is wired to Web3Forms. ONE thing to finish it:
+  * Go to  https://web3forms.com , enter the email you want enquiries sent to,
+    and it emails you an "Access Key" (a string like a1b2c3d4-...).
+  * Open contact.html and find:  value="__WEB3FORMS_ACCESS_KEY__"
+    Replace __WEB3FORMS_ACCESS_KEY__ with your key. (Or send the key to Claude
+    and it'll drop it in for you.)
+  * Until the real key is in, the form won't send. Once it is, every enquiry is
+    emailed to you — no inbox setup or dashboard needed.
+
+
+THE "LOG IN" BUTTON
+-------------------
+"Log in" points to your live app at:
+    https://ptpay-staging.up.railway.app/trainer
+That's your staging address. When your production app is on its real domain,
+tell Claude and it'll update the link everywhere.
+
+
+SEO — WHAT'S ALREADY DONE
+-------------------------
+Baked in for you:
+  * A unique, keyword-aware page title and description on every page.
+  * Open Graph + Twitter "cards" so a shared link shows a proper title,
+    description and the FlexPaid preview image (og-image.png).
+  * A sitemap.xml and robots.txt so Google can find and crawl every page.
+  * Structured data (Organization + SoftwareApplication) to help Google
+    understand what FlexPaid is.
+  * A browser-tab icon (favicon), clean page addresses, and the login page set
+    to "no-index" (it shouldn't appear in search results).
+
+AFTER YOU'RE LIVE (5-minute SEO finish):
+  1. Confirm the site is on https://flexpaid.com.au. If your real domain is
+     different, tell Claude — a couple of SEO values are set to that address.
+  2. Create a free Google Search Console account (search.google.com/search-console),
+     verify your domain, and submit  https://flexpaid.com.au/sitemap.xml.
+  3. Do the same with Bing Webmaster Tools (optional but easy).
+
+HONEST NOTE ON SEO: the technical foundation above is done and is exactly what
+you want in place this early. But ranking on Google for competitive searches is
+a longer game — it comes from real content, being live for a while, and other
+sites linking to you. The groundwork is set; the growth builds over time.
+
+
+BEFORE YOU GO LIVE
+------------------
+1. LEGAL PAGES: replace every [bracketed placeholder] (company name, ABN,
+   contact email, state, date) in the three legal pages, and have a lawyer
+   review them.
+2. Fill in the placeholders on the Contact page, and confirm the platform-fee
+   wording on the Trainer Terms page matches what the app actually charges.
+3. Point "Log in" at your production app address once it's set up.
+
+
+EDITING LATER
+-------------
+To change any wording, prices or images — or to move to WordPress one day —
+just ask Claude. You don't need to touch the code yourself.

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /login
+
+Sitemap: https://flexpaid.com.au/sitemap.xml
